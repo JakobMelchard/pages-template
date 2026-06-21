@@ -25,17 +25,13 @@ for f in .gitignore .gitleaks.toml _exclude; do
   [ -f "$f" ] || cp "$COREDIR/$f" "$f"
 done
 
-for pat in "/.core" "/scripts"; do
-  grep -qxF "$pat" _exclude 2>/dev/null || echo "$pat" >> _exclude
-done
+cat >> _exclude <<'EOF'
+/.core
+/scripts
+EOF
 
 if ! command -v gitleaks &>/dev/null; then
-  echo "→ installing gitleaks..."
-  if [[ "$OSTYPE" == "darwin"* ]]; then
-    brew install gitleaks
-  elif command -v apt-get &>/dev/null; then
-    sudo apt-get install -y gitleaks
-  fi
+  echo "  ⚠ gitleaks not found — install manually (brew install gitleaks)"
 fi
 
 echo "✓ installed"
