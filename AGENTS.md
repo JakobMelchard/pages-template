@@ -1,21 +1,18 @@
-# pages-template — CF Pages project template
-
-Template repo. Consumer projects are created via "Use this template".
-
-## Setup in consumer project
+# pages-template — CF Pages project
 
 ```sh
-bash install.sh
+curl -sL https://raw.githubusercontent.com/JakobMelchard/core/main/install.sh | bash
 ```
 
-Adds [pages-core](https://github.com/JakobMelchard/pages-core) as `.core` submodule, sets hooks path, seeds config.
+Edit `.pages-name` with your Cloudflare Pages project name.
+Add `scripts/{dev,validate,build,test}` as needed.
 
-## Update
+## Commands
 
 ```sh
-bash update.sh
+make dev        # dev server
+make validate   # run scripts/validate
+make build      # run scripts/build
+make test       # run scripts/test
+make deploy     # pages deploy
 ```
-
-## CI
-
-Release-please only. Deploy is local via pre-push hook.

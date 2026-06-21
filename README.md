@@ -1,45 +1,21 @@
 # pages-template
 
-GitHub template for Cloudflare Pages projects. Provides shared hooks, Makefile targets, and release-please CI via [pages-core](https://github.com/JakobMelchard/pages-core).
+GitHub template for Cloudflare Pages projects.
 
-## Usage
+## Use
 
-1. **Create project**: "Use this template" on GitHub, then clone
-2. **Install**: `bash install.sh`
-   - Adds `pages-core` as `.core` submodule
-   - Sets `core.hooksPath` to `.core/hooks/`
-   - Seeds `.gitignore`, `.gitleaks.toml`, `_exclude`
-3. **Develop**: `git commit` runs pre-commit (gitleaks + validate + build + test)
-4. **Deploy**: `git push` runs pre-push (deploy to Pages)
-5. **Update**: `bash update.sh` pulls latest `pages-core`
+1. "Use this template" on GitHub → clone
+2. `curl -sL https://raw.githubusercontent.com/JakobMelchard/core/main/install.sh | bash`
+3. Edit `.pages-name` with your CF Pages project name
+4. Add `scripts/{dev,validate,build,test}` as needed
+5. `make dev` to develop, `make deploy` to ship
 
-## Project structure after install
+## Structure
 
 ```
-project/
-├── install.sh               # from template (committed)
-├── update.sh                # from template (committed)
-├── .core/                   # submodule → pages-core
-│   ├── Makefile             # dev|validate|build|test|deploy
-│   └── hooks/               # pre-commit, pre-push
-├── .gitignore               # seeded from .core
-├── .gitleaks.toml           # seeded from .core
-├── _exclude                 # seeded from .core
-├── scripts/
-│   ├── dev                  # project-defined (optional)
-│   ├── validate             # project-defined (optional)
-│   ├── build                # project-defined (optional)
-│   └── test                 # project-defined (optional)
-├── static/
-└── .github/workflows/
-    └── release.yml
+.pages-name             # Cloudflare Pages project name (edit me!)
+Makefile                # dev|validate|build|test|deploy
+.core/                  # submodule (added by install.sh)
+scripts/{dev,validate,build,test}  # project-defined (optional)
+.github/workflows/release.yml  # seeded by install.sh
 ```
-
-## Adding project-specific scripts
-
-| File | Called by | Purpose |
-|---|---|---|
-| `scripts/validate` | `make validate` | Schema validation, linting |
-| `scripts/build` | `make build` | Generate site assets |
-| `scripts/test` | `make test` | Run tests |
-| `scripts/dev` | `make dev` | Custom dev server |
