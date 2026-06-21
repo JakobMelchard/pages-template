@@ -1,6 +1,6 @@
 # pages-template
 
-GitHub template for Cloudflare Pages projects. Provides shared hooks, `run` command, and release-please CI via [pages-core](https://github.com/JakobMelchard/pages-core).
+GitHub template for Cloudflare Pages projects. Provides shared hooks, Makefile targets, and release-please CI via [pages-core](https://github.com/JakobMelchard/pages-core).
 
 ## Usage
 
@@ -20,12 +20,13 @@ project/
 ├── install.sh               # from template (committed)
 ├── update.sh                # from template (committed)
 ├── .core/                   # submodule → pages-core
-│   ├── run                  # entry point
+│   ├── Makefile             # dev|validate|build|test|deploy
 │   └── hooks/               # pre-commit, pre-push
 ├── .gitignore               # seeded from .core
 ├── .gitleaks.toml           # seeded from .core
 ├── _exclude                 # seeded from .core
 ├── scripts/
+│   ├── dev                  # project-defined (optional)
 │   ├── validate             # project-defined (optional)
 │   ├── build                # project-defined (optional)
 │   └── test                 # project-defined (optional)
@@ -38,8 +39,7 @@ project/
 
 | File | Called by | Purpose |
 |---|---|---|
-| `scripts/validate` | `.core/run --pre` | Schema validation, linting |
-| `scripts/build` | `.core/run --build` | Generate site assets |
-| `scripts/test` | `.core/run --test` | Run tests |
-
-Set `RUN_CMD` env for custom dev command (e.g., `RUN_CMD="python .core/../scripts/serve.py"`).
+| `scripts/validate` | `make validate` | Schema validation, linting |
+| `scripts/build` | `make build` | Generate site assets |
+| `scripts/test` | `make test` | Run tests |
+| `scripts/dev` | `make dev` | Custom dev server |

@@ -31,7 +31,7 @@ cat >> _exclude <<'EOF'
 EOF
 
 if ! command -v gitleaks &>/dev/null; then
-  echo "  ⚠ gitleaks not found — install manually (brew install gitleaks)"
+  echo "  ⚠ gitleaks not found — install manually"
 fi
 
 echo "✓ installed"
