@@ -5,7 +5,7 @@ GitHub template for Cloudflare Pages projects.
 ## Use
 
 1. "Use this template" on GitHub → clone
-2. `curl -sL https://raw.githubusercontent.com/JakobMelchard/core/main/install.sh | bash`
+2. `curl -sL https://raw.githubusercontent.com/JakobMelchard/cloudflare-core/main/install.sh | bash`
 3. Edit `.pages-name` with your CF Pages project name
 4. Add `scripts/{dev,validate,build,test}` as needed
 5. `make dev` to develop, `make deploy` to ship

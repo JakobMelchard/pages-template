@@ -1,7 +1,7 @@
 # pages-template — CF Pages project
 
 ```sh
-curl -sL https://raw.githubusercontent.com/JakobMelchard/core/main/install.sh | bash
+curl -sL https://raw.githubusercontent.com/JakobMelchard/cloudflare-core/main/install.sh | bash
 ```
 
 Edit `.pages-name` with your Cloudflare Pages project name.
