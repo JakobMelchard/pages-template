@@ -4,7 +4,7 @@
 curl -sL https://raw.githubusercontent.com/JakobMelchard/cloudflare-core/main/install.sh | bash
 ```
 
-Edit `.pages-name` with your Cloudflare Pages project name.
+Edit `.pages-name` with your CF Pages project name.
 Add `scripts/{dev,validate,build,test}` as needed.
 
 ## Commands
