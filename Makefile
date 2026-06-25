@@ -1,30 +1,28 @@
 .ONESHELL:
 MAKEFLAGS += --silent
-ROOT := $(shell git rev-parse --show-toplevel 2>/dev/null || pwd)
 PORT ?= 42000
-PROJECT_NAME := $(shell cat $(ROOT)/.pages-name 2>/dev/null)
 
 .PHONY: dev validate build test deploy
 
 default: dev
 
 dev:
-	cd $(ROOT)
-	[ -x scripts/dev ] && exec scripts/dev
+	if [ -x scripts/dev ]; then
+		exec scripts/dev
+	fi
 	wrangler pages dev . --port $(PORT) --live-reload
 
 validate:
-	cd $(ROOT)
-	[ -x scripts/validate ] && scripts/validate
+	if [ -x scripts/validate ]; then
+		scripts/validate
+	fi
 
 build:
-	cd $(ROOT)
 	[ -x scripts/build ] && scripts/build
 
 test:
-	cd $(ROOT)
 	[ -x scripts/test ] && scripts/test
 
 deploy:
-	cd $(ROOT)
+	PROJECT_NAME=$$(cat .pages-name)
 	wrangler pages deploy $$([ -d public ] && echo "public" || echo ".") --project-name=$$PROJECT_NAME
