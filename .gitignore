@@ -1,1 +1,14 @@
-# Nothing to ignore — template repo is minimal
+node_modules/
+.wrangler
+.env
+.dev.vars
+.DS_Store
+*.pyc
+__pycache__
+.mypy_cache
+.ruff_cache
+.venv
+build
+public/*
+!public/assets/
+!public/.well-known/

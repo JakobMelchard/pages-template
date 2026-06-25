@@ -1,0 +1,11 @@
+{
+  "name": "my-page",
+  "private": true,
+  "devDependencies": {
+    "prettier": "^3"
+  },
+  "scripts": {
+    "format": "prettier --write public/assets/style.css public/assets/main.js",
+    "format:check": "prettier --check public/assets/style.css public/assets/main.js"
+  }
+}
